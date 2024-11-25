@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Learning Journey</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            display: flex;
+            text-align: center;
+            padding: 20px;
+            
+            color: white;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(56,172,236);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        #headline{
+            margin-right:70px;
+            font-size: 30px;
+            
+        }
+        .navbar img {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 20px;
+            color: white;
+        }
+
+        .navbar p {
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s ease;
+            padding-top: 60px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.6);
+            z-index: 1002;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        section {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-radius: 4px;
+        }
+        blockquote {
+            margin: 20px 0;
+            padding: 10px 20px;
+            border-left: 5px solid #2196F3;
+            background-color: #e8f5e9;
+        }
+        a {
+            color: #2196F3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #H3{
+            background-color:yellow;
+            margin-left:0px;
+            padding:12px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <img src="{% static 'img/menu.png' %}" alt="Menu Icon" id="menu-btn">
+            <div id="headline">
+            <h1>Your Learning Journey in Class 12 Mathematics</h1>
+            <p>Track your progress and celebrate your milestones!</p>
+        </div>
+        <p id="time">12:00 PM</p>
+        </div>
+    </header>
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'profile' %}">Profile</a>
+        <a href="{% url 'roadmap' %}">Roadmap</a>
+        <div id="H3">  <b>Journey</b></div>
+        <a href="{% url 'motivation' %}">Motivation</a>
+        <a href="{% url 'previous' %}">Learn Previous Class</a>
+        <a href="{% url 'friend' %}">Show Friends</a>
+        <a href="{% url 'quiz' %}">Games</a>
+        <a href="{% url 'setting' %}">Preferences & Settings</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+    </div>
+<section>
+    <h2>Milestones</h2>
+    <ul>
+        <li><strong>Starting Point:</strong> Complete the introductory modules on basic concepts.</li>
+        <li><strong>First Quiz:</strong> Successfully finish your first quiz on calculus.</li>
+        <li><strong>Midway Assessment:</strong> Achieve a passing score in the mid-module assessment.</li>
+        <li><strong>Mastery:</strong> Demonstrate understanding by solving advanced problems in statistics.</li>
+        <li><strong>Final Exam:</strong> Complete your final exam with confidence and skill.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Your Achievements</h2>
+    <ul>
+        <li><strong>Completed Calculus Module:</strong> Congratulations on mastering limits and derivatives!</li>
+        <li><strong>Statistics Star:</strong> You’ve excelled in interpreting data!</li>
+        <li><strong>Algebra Ace:</strong> You've mastered matrices and determinants!</li>
+        <li><strong>Vector Champion:</strong> You understand 3D geometry concepts!</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Inspirational Quotes</h2>
+    <blockquote>
+        <p>"The only way to learn mathematics is to do mathematics." - Paul Halmos</p>
+    </blockquote>
+    <blockquote>
+        <p>"Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding." - William Paul Thurston</p>
+    </blockquote>
+</section>
+
+<section>
+    <h2>Next Steps</h2>
+    <p>Continue your journey by exploring more resources:</p>
+    <ul>
+        <li><a href="#">Practice Advanced Problems</a></li>
+        <li><a href="#">Join a Study Group</a></li>
+        <li><a href="#">Explore Additional Resources</a></li>
+        <li><a href="#">Seek Help from Tutors</a></li>
+    </ul>
+</section>
+<!-- Include JavaScript -->
+<script>
+    // Time formatting and updating functions
+    function formatTime(date) {
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        return hours + ':' + minutes + ' ' + ampm;
+    }
+
+    function updateTime() {
+        const timeDisplay = document.getElementById('time');
+        const now = new Date();
+        timeDisplay.textContent = formatTime(now);
+    }
+
+    // Ensure the page is fully loaded before setting interval
+    window.onload = function() {
+        updateTime(); // Call once initially
+        setInterval(updateTime, 60000); // Update time every minute
+    };
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.style.left = '0';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.style.left = '-300px';
+    });
+</script>
+</body>
+</html>

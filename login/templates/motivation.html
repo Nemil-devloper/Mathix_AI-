@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Motivation</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <!-- Ensure Django environment -->
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            margin-right:15px;
+            text-align: center;
+            padding: 20px;
+           
+            color: white;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: orange;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        #headline{
+            margin-right:70px;
+            font-size: 30px;
+            
+        }
+        .navbar img {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 20px;
+            color: white;
+        }
+
+        .navbar p {
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s ease;
+            padding-top: 60px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.6);
+            z-index: 1002;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        section {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        blockquote {
+            margin: 20px 0;
+            padding: 10px 20px;
+            border-left: 5px solid #FF5722;
+            background-color: #ffe0b2;
+        }
+        p {
+            margin: 10px 0;
+        }
+        a {
+            color: #FF5722;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #H3{
+            background-color:yellow;
+            margin-left:0px;
+            padding:12px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <img src="{% static 'img/menu.png' %}" alt="Menu Icon" id="menu-btn">
+        <div id="headline">
+        <h1>Daily Motivation</h1>
+        <p>Inspire your learning journey with a motivational quote and story!</p>
+    </div>
+    <p id="time">12:00 PM</p>
+</div>
+</header>
+<div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'profile' %}">User Profile</a>
+    <a href="{% url 'roadmap' %}">Roadmap</a>
+    <a href="{% url 'journey' %}">Journey</a>
+    <div id="H3">  <b>Motivation</b></div>
+    <a href="{% url 'previous' %}">Learn Previous Class</a>
+    <a href="{% url 'friend' %}">Show Friends</a>
+    <a href="{% url 'quiz' %}">Games</a>
+    <a href="{% url 'setting' %}">Preferences & Settings</a>
+    <a href="{% url 'contact' %}">Contact Us</a>
+    <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+</div>
+
+<section>
+    <h2>Today's Quote</h2>
+    <blockquote>
+        <p>"Success is not final, failure is not fatal: It is the courage to continue that counts." - Winston S. Churchill</p>
+    </blockquote>
+</section>
+
+<section>
+    <h2>Story Behind the Quote</h2>
+    <p>
+        Winston Churchill, a renowned leader and orator, faced numerous challenges throughout his life. Despite experiencing failures and setbacks, he persevered and ultimately became a pivotal figure during World War II. His resilience in the face of adversity serves as a powerful reminder for students: success and failure are part of the journey. The courage to keep pushing forward, learn from mistakes, and strive for improvement is what truly matters.
+    </p>
+    <p>
+        In your academic journey, you may encounter obstacles, difficult subjects, or disappointing grades. Remember that these are temporary setbacks. Embrace challenges as opportunities to learn and grow. Each mistake you make is a step toward your ultimate success. Just like Churchill, keep moving forward with determination and courage, and you'll find your way to achieving your goals.
+    </p>
+</section>
+
+<section>
+    <h2>Additional Resources</h2>
+    <p>Need more motivation? Check out these resources:</p>
+    <ul>
+        <li><a href="#">Motivational Videos</a></li>
+        <li><a href="#">Success Stories from Students</a></li>
+        <li><a href="#">Tips for Overcoming Challenges</a></li>
+    </ul>
+</section>
+<script>
+    // Time formatting and updating functions
+    function formatTime(date) {
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        return hours + ':' + minutes + ' ' + ampm;
+    }
+
+    function updateTime() {
+        const timeDisplay = document.getElementById('time');
+        const now = new Date();
+        timeDisplay.textContent = formatTime(now);
+    }
+
+    // Ensure the page is fully loaded before setting interval
+    window.onload = function() {
+        updateTime(); // Call once initially
+        setInterval(updateTime, 60000); // Update time every minute
+    };
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.style.left = '0';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.style.left = '-300px';
+    });
+</script>
+
+</body>
+</html>

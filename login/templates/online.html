@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Mathematics Classes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bg.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar img {
+            width: 40px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .current-class {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .schedule {
+            font-size: 18px;
+        }
+
+        .class-item {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="menu.png" alt="Menu Icon" id="menu-btn"> <!-- Menu button -->
+        <p>Online Mathematics Classes</p>
+    </div>
+
+    <div class="container">
+        <div class="current-class" id="current-class">
+            <!-- Current class status will be displayed here -->
+        </div>
+
+        <div class="schedule">
+            <h2>Today's Class Schedule:</h2>
+            <div id="class-schedule">
+                <!-- Class schedule will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for class schedule
+        const schedule = [
+            { time: "09:00 AM - 10:00 AM", subject: "Algebra" },
+            { time: "10:30 AM - 11:30 AM", subject: "Calculus" },
+            { time: "12:00 PM - 01:00 PM", subject: "Geometry" },
+            { time: "02:00 PM - 03:00 PM", subject: "Statistics" }
+        ];
+
+        // Function to display the current class status
+        function displayCurrentClass() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
+            const currentTime = currentHour + currentMinute / 60;
+
+            let ongoingClass = null;
+
+            // Check for any ongoing class
+            for (const classItem of schedule) {
+                const [timeRange, subject] = classItem.time.split(" - ");
+                const [startHour, startMinute] = timeRange.split(":").map(Number);
+                const endHour = parseInt(classItem.time.split(" ")[0].split(":")[0]) + 1; // Assuming 1-hour class
+                const startTime = startHour + startMinute / 60;
+                const endTime = endHour;
+
+                if (currentTime >= startTime && currentTime < endTime) {
+                    ongoingClass = subject;
+                    break;
+                }
+            }
+
+            const currentClassElement = document.getElementById('current-class');
+            if (ongoingClass) {
+                currentClassElement.textContent = `Currently in class: ${ongoingClass}`;
+            } else {
+                currentClassElement.textContent = "No class currently.";
+            }
+        }
+
+        // Function to display the class schedule
+        function displaySchedule() {
+            const classScheduleElement = document.getElementById('class-schedule');
+            schedule.forEach(classItem => {
+                const classDiv = document.createElement('div');
+                classDiv.className = 'class-item';
+                classDiv.textContent = `${classItem.time}: ${classItem.subject}`;
+                classScheduleElement.appendChild(classDiv);
+            });
+        }
+
+        // Initial setup
+        displayCurrentClass();
+        displaySchedule();
+    </script>
+</body>
+</html>

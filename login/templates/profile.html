@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Mathematics Learning</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            width: 40px;
+            cursor: pointer;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+
+        .navbar p {
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s ease;
+            padding-top: 60px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.6);
+            z-index: 1002;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .profile-container {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 1000px;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .profile-container h1 {
+            margin-bottom: 20px;
+        }
+
+        /* User Profile Section */
+        .user-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .user-info img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .user-info h2 {
+            margin: 10px 0;
+            font-size: 22px;
+        }
+
+        .user-info p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .user-info button {
+            background-color: #4a69bd;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Learning Progress Section */
+        .learning-stats {
+            margin-top: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-box {
+            background-color: #f4f4f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .stat-box h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #4a69bd;
+        }
+
+        .stat-box p {
+            font-size: 28px;
+            margin: 5px 0;
+            color: #333;
+        }
+
+        /* Achievements Section */
+        .achievement-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #dff9fb;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .achievement-box img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .achievement-box h4 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .achievement-box p {
+            margin: 5px 0 0 0;
+            color: #27ae60;
+        }
+
+        .achievement-box button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #time{
+            margin-right:30px;
+        }
+        #H3{
+            background-color:yellow;
+            margin-left:0px;
+            padding:12px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <img src="{% static 'img/menu.png' %}" alt="Menu Icon" id="menu-btn"> <!-- Menu button -->
+        <div style="display: flex; align-items: center;">
+            <img src="{% static 'img/logo.png' %}" alt="App Logo" style="width: 60px; margin-right: 10px;"> <!-- App Logo -->
+            <h1 style="margin: 0; font-size: 30px; font-weight: 700;">Welcome to your profile</h1>
+        </div>
+        <p id="time">12:00 PM</p>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="{% url 'home' %}">home</a>
+        <div id="H3">  <b>User profile</b></div>
+        <a href="{% url 'roadmap' %}">Road Map</a>
+        <a href="{% url 'journey' %}">Journey</a>
+        <a href="{% url 'motivation' %}">Motivation</a>
+        <a href="{% url 'previous' %}">Learn Previous Class</a>
+        <a href="{% url 'friend' %}">Show Friends</a>
+        <a href="{% url 'quiz' %}">Games</a>
+        <a href="{% url 'setting' %}">Preferences & Settings</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="profile-container">
+        <!-- User Information -->
+        <div class="user-info">
+            <img src="{% static 'img/profile.png' %}" alt="User Profile Picture">
+            <h2>Nemil Panchal</h2>
+            <p>Grade: 12th</p>
+            <p>Email: nemil.panchal@gmail.com</p>
+            <button>Edit Profile</button>
+        </div>
+
+        <!-- Learning Progress and Achievements -->
+        <div class="learning-stats">
+            <h3>Your Learning Progress</h3>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h4>Modules Completed</h4>
+                    <p>12 / 15</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Practice Problems Solved</h4>
+                    <p>120 / 150</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Leaderboard Rank</h4>
+                    <p>5th</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Achievements Unlocked</h4>
+                    <p>7 / 10</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="achievement-box">
+            <img src="{% static 'img/thropy.png' %}" alt="Achievement Medal">
+            <div>
+                <h4>Math Genius</h4>
+                <p>Earned after solving 100 problems</p>
+            </div>
+            <button>View</button>
+        </div>
+    </div>
+
+    <script>
+        // Time formatting and updating functions
+        function formatTime(date) {
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            return hours + ':' + minutes + ' ' + ampm;
+        }
+    
+        function updateTime() {
+            const timeDisplay = document.getElementById('time');
+            const now = new Date();
+            timeDisplay.textContent = formatTime(now);
+        }
+    
+        // Ensure the page is fully loaded before setting interval
+        window.onload = function() {
+            updateTime(); // Call once initially
+            setInterval(updateTime, 60000); // Update time every minute
+        };
+    
+        // Sidebar toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('sidebar').style.left = '0';
+        });
+    
+        document.getElementById('close-btn').addEventListener('click', function() {
+            document.getElementById('sidebar').style.left = '-300px';
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Math Classes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bg.jpg'); /* Replace 'bg.jpg' with the path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent navbar background */
+        }
+
+        .navbar img {
+            width: 40px;
+            cursor: pointer; /* Menu button is clickable */
+            transition: transform 0.3s ease; /* Animation on hover */
+        }
+
+        .navbar img:hover {
+            transform: scale(1.1); /* Slight zoom when hovered */
+        }
+
+        /* Sidebar menu styles */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hidden by default */
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s; /* Smooth transition */
+            padding-top: 60px;
+            z-index: 999;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Background on hover */
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+        }
+
+        .content {
+            margin: 20px;
+        }
+
+        .video {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid white;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        h2 {
+            color: #FFDD57;
+        }
+
+        .video-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .video-description {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar with menu button -->
+    <div class="navbar">
+        <img src="menu.png" alt="Menu Icon" id="menu-btn"> <!-- Menu button -->
+        <p>12:00 PM</p>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="profile.html">User Profile</a>
+        <a href="roadmap.html">Road Map</a>
+        <a href="journey.html">Journey</a>
+        <a href="motivation.html">Motivation</a>
+        <a href="previous.html">Learn Previous Class</a>
+        <a href="friend.html">Show Friends</a>
+        <a href="quiz.html">Games</a>
+        <a href="setting.html">Preferences & Settings</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="content">
+        <h1>Class 12 Offline Math Classes</h1>
+        <div class="video">
+            <div class="video-title">1. Introduction to Calculus</div>
+            <div class="video-description">Learn the basics of calculus, including limits, derivatives, and integrals.</div>
+            <a href="video1.mp4" target="_blank">Watch Video</a> <!-- Replace with actual video link -->
+        </div>
+        <div class="video">
+            <div class="video-title">2. Probability Basics</div>
+            <div class="video-description">An introduction to probability concepts and their applications in mathematics.</div>
+            <a href="video2.mp4" target="_blank">Watch Video</a> <!-- Replace with actual video link -->
+        </div>
+        <div class="video">
+            <div class="video-title">3. Algebra: Quadratic Equations</div>
+            <div class="video-description">Solve quadratic equations using various methods.</div>
+            <a href="video3.mp4" target="_blank">Watch Video</a> <!-- Replace with actual video link -->
+        </div>
+        <div class="video">
+            <div class="video-title">4. Trigonometry Fundamentals</div>
+            <div class="video-description">Understand the basic concepts of trigonometry and its applications.</div>
+            <a href="video4.mp4" target="_blank">Watch Video</a> <!-- Replace with actual video link -->
+        </div>
+        <div class="video">
+            <div class="video-title">5. Vectors and Three-Dimensional Geometry</div>
+            <div class="video-description">Explore vectors and their applications in three-dimensional space.</div>
+            <a href="video5.mp4" target="_blank">Watch Video</a> <!-- Replace with actual video link -->
+        </div>
+    </div>
+
+    <script>
+        // Sidebar menu toggle functionality
+        const menuButton = document.getElementById('menu-btn');
+        const closeButton = document.getElementById('close-btn');
+        const sidebar = document.getElementById('sidebar');
+
+        // Open sidebar when menu button is clicked
+        menuButton.addEventListener('click', () => {
+            sidebar.style.left = '0'; // Show the sidebar
+        });
+
+        // Close sidebar when close button is clicked
+        closeButton.addEventListener('click', () => {
+            sidebar.style.left = '-250px'; // Hide the sidebar
+        });
+    </script>
+</body>
+</html>

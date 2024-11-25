@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Puzzles and Quizzes - Class 12</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    {% load static%}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            margin-right:4px;
+            text-align: center;
+            padding: 0px;
+            background-color: #3F51B5;
+            color: white;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 8px;
+            background: rgba(220,20,60);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        #headline{
+            margin-right:70px;
+            font-size: 30px;
+            
+        }
+        .navbar img {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 20px;
+            color: white;
+        }
+
+        .navbar p {
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s ease;
+            padding-top: 60px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.6);
+            z-index: 1002;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        h1 {
+            color: #333;
+        }
+        section {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .puzzle, .quiz {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #3F51B5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #303F9F;
+        }
+        #quizForm {
+            display: none;
+            margin-top: 10px;
+        }
+        #H3{
+            background-color:rgba(220,20,60);
+            margin-left:0px;
+            padding:12px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <img src="{% static 'img/menu.png' %}" alt="Menu Icon" id="menu-btn">
+        <div id="headline">
+        <h1>Mathematics Puzzles and Quizzes for Class 12</h1>
+        <p>Challenge yourself with fun puzzles and quizzes!</p>
+    </div>
+    <p id="time">12:00 PM</p>
+</div>
+</header>
+<div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'profile' %}">User Profile</a>
+    <a href="{% url 'roadmap' %}">Roadmap</a>
+    <a href="{% url 'journey' %}">Journey</a>
+    <a href="{% url 'motivation' %}">Motivation</a>
+    <a href="{% url 'previous' %}">Learn Previous Class</a>
+    <a href="{% url 'friend' %}">Show Friends</a>
+    <div id="H3">  <b>Games</b></div>
+    <a href="{% url 'setting' %}">Preferences & Settings</a>
+    <a href="{% url 'contact' %}">Contact Us</a>
+    <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+</div>
+<section>
+    <h2>Puzzles</h2>
+    <div class="puzzle">
+        <h3>1. A number is multiplied by 2, then 3 is added to it. If the result is 15, what is the number?</h3>
+        <button onclick="alert('Answer: 6!')">Show Answer</button>
+    </div>
+    <div class="puzzle">
+        <h3>2. I am a two-digit number. My tens digit is 3 more than my units digit. What number am I?</h3>
+        <button onclick="alert('Answer: 39!')">Show Answer</button>
+    </div>
+</section>
+
+<section>
+    <h2>Quizzes</h2>
+    <div class="quiz">
+        <h3>1. What is the derivative of f(x) = 3x² + 5x - 4?</h3>
+        <button onclick="showQuiz(1)">Answer Quiz</button>
+        <div id="quizForm" data-quiz="1">
+            <input type="text" placeholder="Your Answer" id="answer1">
+            <button onclick="checkAnswer(1, '6x + 5')">Submit</button>
+            <div id="result1"></div>
+        </div>
+    </div>
+    <div class="quiz">
+        <h3>2. Solve for x: 2x + 3 = 7.</h3>
+        <button onclick="showQuiz(2)">Answer Quiz</button>
+        <div id="quizForm" data-quiz="2">
+            <input type="number" placeholder="Your Answer" id="answer2">
+            <button onclick="checkAnswer(2, 2)">Submit</button>
+            <div id="result2"></div>
+        </div>
+    </div>
+    <div class="quiz">
+        <h3>3. What is the value of sin(30°) + cos(60°)?</h3>
+        <button onclick="showQuiz(3)">Answer Quiz</button>
+        <div id="quizForm" data-quiz="3">
+            <input type="number" placeholder="Your Answer" id="answer3">
+            <button onclick="checkAnswer(3, 1)">Submit</button>
+            <div id="result3"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    <!-- Include JavaScript -->
+    
+        // Time formatting and updating functions
+        function formatTime(date) {
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            return hours + ':' + minutes + ' ' + ampm;
+        }
+    
+        function updateTime() {
+            const timeDisplay = document.getElementById('time');
+            const now = new Date();
+            timeDisplay.textContent = formatTime(now);
+        }
+    
+        // Ensure the page is fully loaded before setting interval
+        window.onload = function() {
+            updateTime(); // Call once initially
+            setInterval(updateTime, 60000); // Update time every minute
+        };
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const sidebar = document.getElementById('sidebar');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.style.left = '0';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.style.left = '-300px';
+        });
+    function showQuiz(quizNumber) {
+        const quizForms = document.querySelectorAll('#quizForm');
+        quizForms.forEach(form => {
+            form.style.display = 'none'; // Hide all forms
+        });
+        const currentQuizForm = document.querySelector(`[data-quiz="${quizNumber}"]`);
+        currentQuizForm.style.display = 'block'; // Show current quiz form
+    }
+
+    function checkAnswer(quizNumber, correctAnswer) {
+        const userAnswer = document.getElementById(`answer${quizNumber}`).value;
+        const resultDiv = document.getElementById(`result${quizNumber}`);
+        
+        if (quizNumber === 1) {
+            if (userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+                resultDiv.textContent = "Correct! 🎉";
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.textContent = "Incorrect, try again!";
+                resultDiv.style.color = "red";
+            }
+        } else {
+            if (parseInt(userAnswer) === correctAnswer) {
+                resultDiv.textContent = "Correct! 🎉";
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.textContent = "Incorrect, try again!";
+                resultDiv.style.color = "red";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

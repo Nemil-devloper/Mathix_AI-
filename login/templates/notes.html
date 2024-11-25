@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Learning Application</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(2, 15, 104, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(254, 253, 253, 0.7);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .section {
+            display: none; /* Hide sections initially */
+        }
+
+        .active {
+            display: block; /* Show active section */
+        }
+
+        button {
+            background-color: #FFDD57;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #FFC107;
+            transform: scale(1.05);
+        }
+
+        .note, .question {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: black;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .note h3, .question h3 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="main.html">Home</a>
+        <div>
+            <button onclick="showSection('notes')">Math Notes</button>
+            <button onclick="showSection('pyq')">Previous Year Questions</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="notes" class="section active">
+            <h2>Math Notes</h2>
+            <div class="note">
+                <h3>1. Derivatives</h3>
+                <p>The derivative of a function measures how the function value changes as its input changes. For example, the derivative of f(x) = x² is f'(x) = 2x.</p>
+            </div>
+            <div class="note">
+                <h3>2. Integrals</h3>
+                <p>Integrals are used to find areas under curves. The integral of f(x) = x is ∫f(x)dx = (1/2)x² + C, where C is the constant of integration.</p>
+            </div>
+            <div class="note">
+                <h3>3. Trigonometric Identities</h3>
+                <p>Key identities include sin²(x) + cos²(x) = 1 and tan(x) = sin(x)/cos(x).</p>
+            </div>
+            <div class="note">
+                <h3>4. Quadratic Equations</h3>
+                <p>A quadratic equation is in the form ax² + bx + c = 0. Solutions can be found using the quadratic formula: x = (-b ± √(b² - 4ac)) / (2a).</p>
+            </div>
+        </div>
+
+        <div id="pyq" class="section">
+            <h2>Previous Year Questions</h2>
+            <div class="question">
+                <h3>1. What is the derivative of f(x) = 3x² + 5x - 7?</h3>
+                <p>Answer: f'(x) = 6x + 5</p>
+            </div>
+            <div class="question">
+                <h3>2. Calculate the integral ∫(2x + 3)dx.</h3>
+                <p>Answer: (x² + 3x + C)</p>
+            </div>
+            <div class="question">
+                <h3>3. Solve the quadratic equation x² - 5x + 6 = 0.</h3>
+                <p>Answer: x = 2, x = 3</p>
+            </div>
+            <div class="question">
+                <h3>4. Prove the identity: sin²(x) + cos²(x) = 1.</h3>
+                <p>Answer: This follows from the Pythagorean theorem.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

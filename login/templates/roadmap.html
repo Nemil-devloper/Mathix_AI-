@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Learning Roadmap for Class 12</title>
+     <!-- Ensure Django environment -->
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            
+        }
+        header {
+            display: flex;
+            text-align: center;
+            padding: 20px;
+            
+            color: white;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: green;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        #headline{
+            margin-right:70px;
+            font-size: 30px;
+            
+        }
+        .navbar img {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 20px;
+            color: white;
+        }
+
+        .navbar p {
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s ease;
+            padding-top: 60px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.6);
+            z-index: 1002;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        section {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .tips {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+        #time{
+            font-size:auto;
+        }
+        #H3{
+            background-color:yellow;
+            margin-left:0px;
+            padding:12px;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <img src="{% static 'img/menu.png' %}" alt="Menu Icon" id="menu-btn">
+            <div id="headline">
+                <h1>Math Learning Roadmap for Class 12</h1>
+                <p>Welcome to Your Learning Journey!</p>
+            </div>
+            <p id="time">12:00 PM</p>
+        </div>
+    </header>
+
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'profile' %}">User Profile</a>
+        <div id="H3">  <b>Road Map</b></div>
+        <a href="{% url 'journey' %}">Journey</a>
+        <a href="{% url 'motivation' %}">Motivation</a>
+        <a href="{% url 'previous' %}">Learn Previous Class</a>
+        <a href="{% url 'friend' %}">Show Friends</a>
+        <a href="{% url 'quiz' %}">Games</a>
+        <a href="{% url 'setting' %}">Preferences & Settings</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+    </div>
+
+    <section>
+        <h2>Course Overview</h2>
+        <ul>
+            <li><strong>Calculus:</strong> Limits, continuity, derivatives, and applications.</li>
+            <li><strong>Algebra:</strong> Matrices, determinants, and their applications.</li>
+            <li><strong>Statistics:</strong> Probability distributions, random variables, and data interpretation.</li>
+            <li><strong>Vectors and 3D Geometry:</strong> Vector algebra and geometry in three dimensions.</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>Learning Pathway</h2>
+        <ol>
+            <li>
+                <strong>Start with Calculus</strong>
+                <ul>
+                    <li><a href="#">Watch Video on Limits</a></li>
+                    <li><a href="#">Practice Problems</a></li>
+                </ul>
+            </li>
+            <li>
+                <strong>Move to Algebra</strong>
+                <ul>
+                    <li><a href="#">Matrix Basics Article</a></li>
+                    <li><a href="#">Solve Exercises</a></li>
+                </ul>
+            </li>
+            <li>
+                <strong>Dive into Statistics</strong>
+                <ul>
+                    <li><a href="#">Statistics Overview Video</a></li>
+                    <li><a href="#">Interactive Exercises</a></li>
+                </ul>
+            </li>
+            <li>
+                <strong>Finish with Vectors and Geometry</strong>
+                <ul>
+                    <li><a href="#">3D Geometry Resource</a></li>
+                    <li><a href="#">Practice with Problems</a></li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+    
+    <section>
+        <h2>Assessment Milestones</h2>
+        <ul>
+            <li><strong>Mid-Module Quiz:</strong> Assess your knowledge after each module.</li>
+            <li><strong>Final Assessment:</strong> Comprehensive test covering all topics.</li>
+        </ul>
+    </section>
+    
+    <section class="tips">
+        <h2>Tips for Success</h2>
+        <ul>
+            <li>Study Regularly: Set aside dedicated study time each week.</li>
+            <li>Practice Problems: The more you practice, the more confident you'll become.</li>
+            <li>Join Study Groups: Collaborate with classmates to enhance understanding.</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>FAQs</h2>
+        <ul>
+            <li><strong>What if I struggle with a topic?</strong> Don't hesitate to seek help! Reach out through our support page.</li>
+            <li><strong>Are there any recommended books?</strong> Yes! Check our resources page for suggested textbooks.</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>Get Started!</h2>
+        <p><strong>Ready to dive in?</strong> Click <a href="#">here</a> to explore our resources and start your journey to mastering Class 12 mathematics!</p>
+    </section>
+
+    <!-- Include JavaScript -->
+    <script>
+        // Time formatting and updating functions
+        function formatTime(date) {
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            return hours + ':' + minutes + ' ' + ampm;
+        }
+    
+        function updateTime() {
+            const timeDisplay = document.getElementById('time');
+            const now = new Date();
+            timeDisplay.textContent = formatTime(now);
+        }
+    
+        // Ensure the page is fully loaded before setting interval
+        window.onload = function() {
+            updateTime(); // Call once initially
+            setInterval(updateTime, 60000); // Update time every minute
+        };
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const sidebar = document.getElementById('sidebar');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.style.left = '0';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.style.left = '-300px';
+        });
+    </script>
+</body>
+</html>

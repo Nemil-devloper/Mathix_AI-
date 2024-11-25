@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathix - AI Learning Hub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bg.jpg'); /* Replace with a futuristic dynamic background */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(81, 78, 78, 0.7); /* Semi-transparent navbar with soft shadow */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .navbar img {
+            width: 45px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar img:hover {
+            transform: rotate(180deg); /* Futuristic hover animation */
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            top: 0;
+            left: -300px; /* Hidden by default */
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s ease;
+            padding-top: 60px;
+            z-index: 999;
+            box-shadow: 4px 0 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .sidebar a {
+            padding: 20px;
+            text-decoration: none;
+            font-size: 22px;
+            color: white;
+            display: block;
+            transition: 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+
+        /* Greeting styles */
+        .greeting {
+            margin: 30px;
+            font-size: 28px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .greeting h2 {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .menu button {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            color: #283655;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu button img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .menu button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-4px); /* Slight pop-up animation */
+        }
+
+        .menu button img:hover {
+            transform: rotate(360deg); /* Spin icon on hover */
+        }
+
+        /* Responsive Sidebar for smaller screens */
+        @media screen and (max-width: 768px) {
+            .navbar h1 {
+                font-size: 24px;
+            }
+            .menu button {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar with menu button and app logo -->
+    <div class="navbar">
+        <img src="menu.png" alt="Menu Icon" id="menu-btn"> <!-- Menu button -->
+        <div style="display: flex; align-items: center;">
+            <img src="logo.png" alt="App Logo" style="width: 60px; margin-right: 10px;"> <!-- App Logo -->
+            <h1 style="margin: 0; font-size: 30px; font-weight: 700;">MATHIX AI LEARNING HUB</h1>
+        </div>
+        <p>12:00 PM</p>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
+        <a href="profile.html">User Profile</a>
+        <a href="roadmap.html">Road Map</a>
+        <a href="journey.html">Journey</a>
+        <a href="motivation.html">Motivation</a>
+        <a href="previous.html">Learn Previous Class</a>
+        <a href="friend.html">Show Friends</a>
+        <a href="quiz.html">Games</a>
+        <a href="setting.html">Preferences & Settings</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="greeting">
+        <h2>Hello, Nemil</h2>
+        <p>Good Morning</p>
+    </div>
+
+    <div class="menu">
+        <a href="online.html">
+            <button><img src="online.png" alt="Online"> Online Sessions</button>
+        </a>
+        <a href="offline.html">
+            <button><img src="offline.png" alt="Offline"> Offline Sessions</button>
+        </a>
+        <a href="ai.html">
+            <button><img src="ai.png" alt="AI"> Learn with AI</button>
+        </a>
+        <a href="notes.html">
+            <button><img src="notes.png" alt="Notes"> Notes and PYQ</button>
+        </a>
+    </div>
+
+    <script>
+        // Time formatting and updating functions
+        function formatTime(date) {
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // If hour is 0, set it to 12
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            return hours + ':' + minutes + ' ' + ampm;
+        }
+
+        // Time update for India Standard Time
+        function getIndiaTime() {
+            const now = new Date();
+            const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const istOffset = 5.5 * 60 * 60 * 1000;
+            const istTime = new Date(utcTime + istOffset);
+            return istTime;
+        }
+
+        // Update the time in the navbar
+        function updateTime() {
+            const istTime = getIndiaTime();
+            document.querySelector('.navbar p').textContent = formatTime(istTime);
+        }
+
+        // Update greeting text based on time
+        function updateGreeting() {
+            const istTime = getIndiaTime();
+            const hours = istTime.getHours();
+            const greetingText = document.querySelector('.greeting p');
+            
+            if (hours < 12) {
+                greetingText.textContent = 'Good Morning';
+            } else if (hours < 18) {
+                greetingText.textContent = 'Good Afternoon';
+            } else {
+                greetingText.textContent = 'Good Evening';
+            }
+        }
+
+        // Initialize time and greeting
+        updateTime();
+        updateGreeting();
+
+        // Update the time every minute
+        setInterval(updateTime, 60000);
+
+        // Sidebar menu toggle functionality
+        const menuButton = document.getElementById('menu-btn');
+        const closeButton = document.getElementById('close-btn');
+        const sidebar = document.getElementById('sidebar');
+
+        // Open sidebar when menu button is clicked
+        menuButton.addEventListener('click', () => {
+            sidebar.style.left = '0'; // Show the sidebar
+        });
+
+        // Close sidebar when close button is clicked
+        closeButton.addEventListener('click', () => {
+            sidebar.style.left = '-300px'; // Hide the sidebar
+        });
+    </script>
+</body>
+</html>
